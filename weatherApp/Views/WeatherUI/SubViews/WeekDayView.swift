@@ -1,6 +1,6 @@
-import SwiftUICore
+import SwiftUI
 
-struct DayeWeatherView: View {
+struct WeekDayView: View {
     var day: String
     var weatherIcon : String
     var temperature: String

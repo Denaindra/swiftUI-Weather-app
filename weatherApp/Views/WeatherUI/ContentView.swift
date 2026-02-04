@@ -29,7 +29,7 @@ struct ContentView: View {
                 .offset(x: 110, y: -160)
                 }
             )
-            .edgesIgnoringSafeArea(.all)
+            .ignoresSafeArea(.all)
             
                     VStack {
                         Text("Sri Lanka,Colombo")
@@ -53,13 +53,13 @@ struct ContentView: View {
                         Spacer()
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack (spacing: 25){
-                                DayeWeatherView(day: "MON", weatherIcon: "cloud.sun.rain.fill", temperature: "33°C")
-                                DayeWeatherView(day: "THU", weatherIcon: "cloud.sun.bolt.fill", temperature: "32°C")
-                                DayeWeatherView(day: "WEN", weatherIcon: "cloud.sun.rain.fill", temperature: "31°C")
-                                DayeWeatherView(day: "THR", weatherIcon: "cloud.sun.bolt.fill", temperature: "12°C")
-                                DayeWeatherView(day: "FRI", weatherIcon: "cloud.sun.bolt.fill", temperature: "22°C")
-                                DayeWeatherView(day: "SAT", weatherIcon: "cloud.moon.rain.fill", temperature: "31°C")
-                                DayeWeatherView(day: "SUN", weatherIcon: "cloud.sun.bolt.fill", temperature: "21°C")
+                                WeekDayView(day: "MON", weatherIcon: "cloud.sun.rain.fill", temperature: "33°C")
+                                WeekDayView(day: "THU", weatherIcon: "cloud.sun.bolt.fill", temperature: "32°C")
+                                WeekDayView(day: "WEN", weatherIcon: "cloud.sun.rain.fill", temperature: "31°C")
+                                WeekDayView(day: "THR", weatherIcon: "cloud.sun.bolt.fill", temperature: "12°C")
+                                WeekDayView(day: "FRI", weatherIcon: "cloud.sun.bolt.fill", temperature: "22°C")
+                                WeekDayView(day: "SAT", weatherIcon: "cloud.moon.rain.fill", temperature: "31°C")
+                                WeekDayView(day: "SUN", weatherIcon: "cloud.sun.bolt.fill", temperature: "21°C")
                             }
                         } .padding(.horizontal, 10)
                         Spacer()
