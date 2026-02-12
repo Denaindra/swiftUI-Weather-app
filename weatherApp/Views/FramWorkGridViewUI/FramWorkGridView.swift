@@ -4,6 +4,9 @@ import SwiftUI
 
 struct FramWorkGridView: View {
     
+    @StateObject private var framworkViewModel = FramWorkViewModel()
+  
+    
     let columns:[GridItem] = [GridItem(.flexible()),
                               GridItem(.flexible()),
                               GridItem(.flexible())]
@@ -14,13 +17,19 @@ struct FramWorkGridView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(MockData.frameworks) { frameWorkItem in
                             GridItemView(frameWorkItem: frameWorkItem)
+                                .onTapGesture {
+                                    framworkViewModel.selectedFrameWorkd = frameWorkItem
+                                }
                         }
                     }
                     .padding(.horizontal)
                     .padding(.bottom)
                 }
            .navigationTitle("🍎 UI Frameworks")
-           .navigationBarTitleDisplayMode(.large)
+           .sheet(isPresented: $framworkViewModel.isFramworkSelected, content: {
+               FramWorkDetailView(frameWorkItem: framworkViewModel.selectedFrameWorkd ?? MockData.sampleFramework,
+                                  isFramworkSelected: $framworkViewModel.isFramworkSelected)
+           })
         }
     }
 }
