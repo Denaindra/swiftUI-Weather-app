@@ -27,7 +27,7 @@ struct FramWorkDetailView: View {
                 .padding()
             Spacer()
             
-        FrameWorkDetailButton()
+            FrameWorkDetailButton(urlString: frameWorkItem.urlString)
         }
     }
 }
