@@ -16,7 +16,14 @@ struct FrameWorkDetailButton: View {
         Button(action: {
             isShowingSafari = true
         }, label: {
-            Text("Learn More")
+//            Text("Learn More")
+//                .frame(width: 280, height: 50)
+//                .foregroundColor(.white)
+//                .background(Color.red)
+//                .font(.body)
+//                .fontWeight(.semibold)
+//                .cornerRadius(10)
+            Label("Learn More", systemImage: "book.fill")
                 .frame(width: 280, height: 50)
                 .foregroundColor(.white)
                 .background(Color.red)

@@ -10,7 +10,7 @@ import SwiftUI
 struct GridItemView: View {
     let frameWorkItem:Framework
     var body: some View {
-        VStack{
+        HStack(spacing:30){
             Image(frameWorkItem.imageName).resizable().frame(width: 60, height: 60)
             Text(frameWorkItem.name)
                 .font(.title)
@@ -19,6 +19,12 @@ struct GridItemView: View {
                 .scaledToFit()
                 .minimumScaleFactor(0.5)
         }
-        .padding()
+     
+        
     }
 }
+
+#Preview {
+    FramWorkGridView()
+}
+
