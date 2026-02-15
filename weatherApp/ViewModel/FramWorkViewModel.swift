@@ -6,11 +6,16 @@
 //
 
 import Foundation
+import SwiftUI
 
 @MainActor
 final class FramWorkViewModel : ObservableObject{
     @Published var isFramworkSelected = false
-
+    
+    let columns:[GridItem] = [GridItem(.flexible()),
+                              GridItem(.flexible()),
+                              GridItem(.flexible())]
+    
     var selectedFrameWorkd: Framework?
     {
         didSet {

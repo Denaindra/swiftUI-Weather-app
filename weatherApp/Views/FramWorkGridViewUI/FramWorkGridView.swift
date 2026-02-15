@@ -6,15 +6,11 @@ struct FramWorkGridView: View {
     
     @StateObject private var framworkViewModel = FramWorkViewModel()
   
-    
-    let columns:[GridItem] = [GridItem(.flexible()),
-                              GridItem(.flexible()),
-                              GridItem(.flexible())]
-    
+
     var body: some View {
         NavigationView {
                 ScrollView{
-                    LazyVGrid(columns: columns) {
+                    LazyVGrid(columns: framworkViewModel.columns) {
                         ForEach(MockData.frameworks) { frameWorkItem in
                             GridItemView(frameWorkItem: frameWorkItem)
                                 .onTapGesture {
