@@ -1,26 +1,9 @@
 import SwiftUI
 
 struct FramWorkDetailView: View {
-    let frameWorkItem:Framework
-    @Binding var isFramworkSelected:Bool
-    
+    let frameWorkItem:Framework    
     var body: some View {
         VStack{
-            HStack{
-                Spacer()
-                Button(action: {
-                    isFramworkSelected.toggle()
-                }, label: {
-                    Image(systemName: "xmark")
-                        .foregroundColor(Color.black)
-                        .imageScale(Image.Scale.large)
-                        .frame(width: 40,height: 40)
-                    
-                })
-                .padding()
-            }
-
-            Spacer()
             GridItemView(frameWorkItem: frameWorkItem)
             Text(frameWorkItem.description)
                 .font(.body)
@@ -29,11 +12,13 @@ struct FramWorkDetailView: View {
             
             FrameWorkDetailButton(urlString: frameWorkItem.urlString)
         }
+        .navigationTitle(frameWorkItem.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    FramWorkDetailView(frameWorkItem: MockData.sampleFramework, isFramworkSelected: .constant(true))
+    FramWorkDetailView(frameWorkItem: MockData.sampleFramework)
 }
 
 
