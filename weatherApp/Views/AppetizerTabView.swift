@@ -23,6 +23,8 @@ struct AppetizerTabView: View {
                  Label("Main Courses", systemImage: "bag")
              }
         }
+     .tint(Color("tabPromaryColors"))
+     
     }
 }
 
