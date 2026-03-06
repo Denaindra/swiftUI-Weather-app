@@ -5,6 +5,10 @@
 //  Created by Gayan Perera on 2026-03-05.
 //
 
+struct AppetizerAPIResponse: Decodable {
+    let request: [Appetizer]
+}
+
 struct Appetizer: Decodable, Identifiable {
     let id: Int
     let name: String
@@ -14,11 +18,6 @@ struct Appetizer: Decodable, Identifiable {
     let calories: Int
     let protein: Int
     let carbs: Int
-}
-
-
-struct AppetizerResponse: Decodable {
-    let request: [Appetizer]
 }
 
 
