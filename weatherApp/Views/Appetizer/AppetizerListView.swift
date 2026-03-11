@@ -1,41 +1,32 @@
-//
-//  AppetizerListView.swift
-//  weatherApp
-//
-//  Created by Gayan Perera on 2026-02-28.
-//
-
 import SwiftUI
 
 struct AppetizerListView: View {
-    @StateObject var viewModel: AppertizerViewModel
 
-    
-    init() {
-        _viewModel = StateObject(wrappedValue: AppertizerViewModel(service: AppertizerServices()))
-    }
+    @StateObject private var viewModel = AppertizerViewModel(service: AppertizerServices())
+
     var body: some View {
         NavigationView {
-            Group {
-                switch viewModel.state {
-                case .loading:
+            Group{
+                if(viewModel.isLoading){
                     ProgressView("Loading...")
-                case .loaded(let appertizer):
-                    List(appertizer) { appertizer in
-                       ApertizerListItem(appertizer: appertizer)
+                }
+                else{
+                    List(viewModel.appetizer) { appetizer in
+                     ApertizerListItem(appertizer: appetizer)
                     }
-                case .error(let message):
-                    Text(message).foregroundColor(.red)
                 }
             }
             .navigationTitle("Appetizers")
         }
         .task {
-            await  viewModel.LoadAppertizerCollection()
+            await viewModel.LoadAppertizerCollection()
+        }
+        .alert(item: $viewModel.alertItem) { item in
+            Alert(
+                title: Text(item.title),
+                message: Text(item.message),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
-}
-
-#Preview {
-    AppetizerListView()
 }

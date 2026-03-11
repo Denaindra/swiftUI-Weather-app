@@ -10,23 +10,26 @@ import Foundation
 @MainActor
 final class AppertizerViewModel: ObservableObject {
     
-    
-@Published private(set) var state: AppertizerViewState = .loading
+    @Published var alertItem: AlertItem? 
+    @Published  var appetizer: [AppetizerUIModal] = []
+    @Published var isLoading: Bool = false
     
     private let service: AppertizerServiceProtocol
 
+    
     init(service: AppertizerServiceProtocol) {
         self.service = service
     }
 
     func LoadAppertizerCollection() async {
-        state = .loading
+        isLoading = true
         do {
             let data = try await service.fetchAppertizer()
-            state = .loaded(data)
+            self.appetizer = data
+            isLoading = false
         } catch {
-               print(error)  
-            state = .error("Unable to load weather")
+            isLoading = false
+            self.alertItem = AlertContext.networkError(message: "Unable to load weather")
         }
     }
     
