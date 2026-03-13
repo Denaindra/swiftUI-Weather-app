@@ -15,8 +15,9 @@ struct ApertizerListItem: View {
                 AsyncImage(url: URL(string: appertizer.imageURL)) { phase in
                     switch phase {
                     case .empty:
-                        ProgressView()
-                            .frame(width: 120, height: 90)
+                        Image("food-placeholder")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
                     case .success(let image):
                         image
                             .resizable()
@@ -29,6 +30,7 @@ struct ApertizerListItem: View {
                     }
                 }
                 .frame(width: 120, height: 90)
+                .clipped()
                 .cornerRadius(8)
                 
             VStack(alignment: .leading, spacing: 5){
